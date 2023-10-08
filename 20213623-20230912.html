@@ -1,0 +1,338 @@
+<!--文档类型为HTML-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--  字符集为UTF-8-->
+    <meta charset="UTF-8">
+    <title>第二次作业</title>
+    <style>
+        .first {
+            text-indent: 2em;
+        }
+        
+        .second {
+            text-indent: 5em;
+        }
+        
+        .third {
+            text-indent: 8em;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4D4F53;
+        }
+        
+        h4 {
+            text-indent: 2em;
+        }
+        
+        .id {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>学习总结</h1>
+    <h4>简介:</h4>
+    <p class="first">Linux操作系统与Windows操作系统的目录结构不一样，例如：</p>
+    <p class="second">1.在Windows操作系统中的目录结构为 D:\Git-2.30.0-64-bit\Git，且这样的结构可以有多个</p>
+    <p class="third">注意：这里的D: 表示D盘,\表示层级关系 </p>
+    <p class="second">2.在Linux操作系统中的目录结构为 /Git-2.30.0-64-bit/Git ，且Linux操作系统只有一个顶级目录，就是一个根目录</p>
+    <p class="third">注意：开头的/ 表示根目录,后面的/ 表示层级关系</p>
+    <p class="first">学习Linux，本质就是学习在命令行下熟练使用Linux的各类命令：</p>
+    <p class="second">1.命令行：就是Linux终端，是一命令行提示符页面。以纯“字符”的形式操作系统。</p>
+    <p class="second">2.命令：就是Linux程序。一个命令就是Linux的一个程序。命令没有图形化页面，可以在命令行(终端)提供字符反馈。</p>
+    <p class="first">命令的通用格式：command [-options] [parameter]</p>
+    <p class="second">command:命令</p>
+    <p class="second">-options:[可选，非必要输入]命令的一些选项，可以通过选项控制命令的行为细节</p>
+    <p class="second">parameter:[可选，非必要输入]命令的参数，多数用于命令的指向目标</p>
+    <h4>安装了GIT，以下命令绝大多数是在上课老师讲授的，少部分是在书（THE LINLIX COMMAND）中看到，预习了前三章的内容，并熟练掌握了一些简单命令，如：</h4>
+    <hr>
+    <div>
+        <table width="100%" rules="cols" header-cell-style="{'text-align':'center'}">
+            <tr>
+                <th>编号</th>
+                <th>命令格式</th>
+                <th>命令作用</th>
+                <th>详解</th>
+            </tr>
+            <tr>
+                <td class="id"> 1</td>
+                <td class="name">cd [路径]</td>
+                <td>跳转或进入目录的命令</td>
+                <td>
+                    <select>
+                    <option>参数作用:</option>
+                    <option>没有选项只有参数，参数表示目标路径</option>
+                    <option>/: 表示根目录</option>
+                    <option>.: 表示当前目录</option>
+                    <option>..: 表示当前工作目录的上一级目录</option>
+                    <option>~: 表示HOME目录</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">2</td>
+                <td class="name">pwd </td>
+                <td>输出当前所在的工作目录</td>
+                <td>
+                    <select>
+                    <option>没有选项，也没有参数，单独使用</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">3</td>
+                <td class="name">ls [-a -l -h] [Linux路径]</td>
+                <td>默认查看当前工作目录内的内容</td>
+                <td>
+                    <select>
+                    <option>选项与参数作用:</option>
+                    <option>参数表示要展示目录的路径:</option>
+                    <option>-a:显示所有文件及目录（包括以“.”开头的隐藏文件）</option>
+                    <option>-l:以列表的形式列出文件及目录信息</option>
+                    <option>-h:在-l的基础上详细显示出文件的大小（某某KB,某某MB）</option>
+                    <option>选项可以一起使用，如: -al -la -l;这三种是一样的</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">4</td>
+                <td class="name">mkdir [-p] Linux路径</td>
+                <td>在Linux路径下创建文件夹(相对路径与绝对路径都可以)</td>
+                <td>
+                    <select>
+                    <option>选项与参数作用:</option>
+                    <option>参数表示要创建目录的路径:</option>
+                    <option>-P：递归创建目录</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">5</td>
+                <td class="name">exit</td>
+                <td>退出GIT</td>
+                <td>
+                    <select>
+                    
+                    <option>快捷键 ctrl + d 退出GIT</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">6</td>
+                <td class="name">cp [-r] 参数1 参数 2</td>
+                <td>用于复制文件</td>
+                <td>
+                    <select>
+                    <option>选项与参数作用:</option>
+                    <option>-r:可选，用于复制文件，表示递归</option>
+                    <option>参数1：Linux路径，表示被复制的文件或文件夹</option>
+                    <option>参数2：Linux路径，表示要复制去的地方</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">7</td>
+                <td class="name">mv 参数1 参数 2</td>
+                <td>移动文件或文件夹</td>
+                <td>
+                    <select>
+                    <option>参数作用:</option>
+                    <option>参数1：Linux路径，表示被移动的文件或文件夹</option>
+                    <option>参数2：Linux路径，要移动去的地方若不存在则改名</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">8</td>
+                <td class="name">rm [-r -f] 参数1 ... 参数n</td>
+                <td>删除文件名为文件的文件</td>
+                <td>
+                    <select>
+                    <option>选项与参数作用:</option>
+                    <option>-r:可选，表示递归删除文件夹</option>
+                    <option>-f:可选，表示强制删除，不会提示信息</option>
+                    <option>rm 支持通配符*，用来做模糊匹配</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">9</td>
+                <td class="name">history</td>
+                <td>表示查看历史命令记录</td>
+                <td>
+                    <select>
+                    <option>没有选项，也没有有参数，单独使用</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">10</td>
+                <td class="name">rmdir 参数</td>
+                <td>删除目录（当目录内不为空时不能删除）</td>
+                <td>
+                    <select>
+                    <option>参数作用:</option>
+                    <option>没有选项只有参数，参数表示目标路径</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">11</td>
+                <td class="name">date </td>
+                <td>显示当前的时间和日期</td>
+                <td>
+                    <select>
+                    <option>没有选项，也没有有参数，单独使用</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">12</td>
+                <td class="name">help </td>
+                <td>查看一些命令</td>
+                <td>
+                    <select>
+                    <option>没有选项，也没有有参数，单独使用</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">13</td>
+                <td class="name">df </td>
+                <td>显示磁盘的内存占用情况</td>
+                <td>
+                    <select>
+                    <option>没有选项，也没有有参数，单独使用</option>
+                </select>
+                </td>
+            </tr>
+			<tr>
+                <td class="id">14</td>
+                <td class="name">pwd 参数 </td>
+                <td>显示当前工作目录</td>
+                <td>
+                    <select>
+                    <option>参数作用</option>
+                    <option>参数表示当前工作的目录</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">15</td>
+                <td class="name">cat 参数 </td>
+                <td>查看文件内的内容</td>
+                <td>
+                    <select>
+                    <option>参数作用</option>
+                    <option>参数表示查看的路径下的目录内的内容</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">16</td>
+                <td class="name">more 参数 </td>
+                <td>查看文件内的内容</td>
+                <td>
+                    <select>
+                    <option>参数作用</option>
+                    <option>上下箭头支持上下翻页，b回到开头，e到文件的结尾</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">17</td>
+                <td class="name">git init</td>
+                <td>初始化git库</td>
+                <td>
+                    <select>
+                    <option>没有选项，也没有有参数，单独使用</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">18</td>
+                <td class="name">tar-xf 参数</td>
+                <td>解压文件</td>
+                <td>
+                    <select>
+                    <option>参数作用</option>
+                    <option>解压文件名为参数的文件</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">19</td>
+                <td class="name">touch 参数</td>
+                <td>创建文件名为参数的文件</td>
+                <td>
+                    <select>
+                    <option>参数作用</option>
+                    <option>创建文件名为参数的文件</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">20</td>
+                <td class="name">git add 文件名(要带后缀)</td>
+                <td>将创建的文件或者是已有的文件从工作区转到暂存区</td>
+                <td>
+                    <select>
+                    <option>参数作用</option>
+                    <option>表示要操作的对象</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">21</td>
+                <td class="name">git commit [-m] </td>
+                <td>将暂存区的文件提交到库内，形成了一次记录</td>
+                <td>
+                    <select>
+                    <option>参数作用</option>
+                    <option>m后面的就是备注信息</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">22</td>
+                <td class="name">vi 参数</td>
+                <td>用vi编辑器进行,文件的编写</td>
+                <td>
+                    <select>
+                    <option>没有选项，也没有有参数，单独使用</option>
+                    <option>按insert进入插入,按Esc进入命令, :wq可以保存退出</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">23</td>
+                <td class="name">git status</td>
+                <td>查看文件的状态（包括库内的 暂存区内的 和未暂存区内的）</td>
+                <td>
+                    <select>
+                    <option>没有选项，也没有有参数，单独使用</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="id">24</td>
+                <td class="name">git log</td>
+                <td>查看日志信息</td>
+                <td>
+                    <select>
+                    <option>没有选项，也没有有参数，单独使用</option>
+                </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+
+</html>
