@@ -1,0 +1,215 @@
+一、简介
+        在第一堂课的学习中，我安装了gitbash软件，更改了背景和字号。学习了创建文件夹、打开文件夹、查看文件夹、复制文件夹、删除文件夹的命令操作。初步了解了Linux的简单命令。
+二、操作步骤
+    在git根目录下创建自己的个人项目文件夹。在创建的文件夹中，进行文件的拷贝和删除，并用ls列出。练习之后，将history导出。
+三、history
+    1  1s
+    2  ls
+    3  md
+    4  mkdir cl
+    5  ls
+    6  cd c
+    7  ls /e
+    8  ls
+    9  ls-h
+   10  history 
+   11  cd c
+   12  md
+   13  ls
+   14  mkdir cl
+   15  mkdir xg
+   16  ls
+   17  cd
+   18  cd /xg/
+   19  history
+   20  mkdir
+   21  cp -r js/*javaweb
+   22  ls
+   23  q
+   24  clear
+   25  history 
+   26  ls
+   27  rm xg
+   28  cd/
+   29  cd d
+   30  ls /d
+   31  cd/d
+   32  md/d
+   33  md d
+   34  cd /
+   35  cd /desktop
+   36  cd /Desktop
+   37  ls
+   38  cd /d
+   39  ls
+   40  cp -r js/*javaweb
+   41  cd /OneDrive
+   42  cd /桌面
+   43  cd /d/OneDrive
+   44  ls
+   45  cd /桌面
+   46  cd /OneDrive/桌面
+   47  mkdir cl
+   48  ls
+   49  cd
+   50  ls
+   51  cd /d
+   52  ls
+   53  cd/
+   54  ls
+   55  mkdir javaweb
+   56  ls
+   57  cd /d/javaweb
+   58  cp /d/js . -R
+   59  ls
+   60  cp /d/ohoto .-R
+   61  cp /d/photo .-R
+   62  cp /d/photo . -R
+   63  ls
+   64  history 
+   65  ls
+   66  cd d
+   67  cd /d
+   68  cp -r js/*javaweb
+   69  ls
+   70  cp -r js/* javaweb
+   71  cd /javaweb
+   72  cd /d/javaweb
+   73  ls
+   74  cd ...
+   75  cd ..
+   76  ll
+   77  history 
+   78  history 
+   79  ls -a
+   80  ls -l
+   81  cd /d
+   82  mkdir javaweb
+   83  ls
+   84  rm javaweb
+   85  rm -r javaweb
+   86  ls
+   87  mkdir javaweb
+   88  cp -r js/* javaweb
+   89  cd /javaweb
+   90  cd /d/javaweb
+   91  ls
+   92  cp /d/js . -R
+   93  ls
+   94  cd /d/photo
+   95  ls
+   96  cd /d/javaweb
+   97  cp /d/photo . -R
+   98  ls
+   99  rm -r js
+  100  ls
+  101  cp -r js/* javaweb
+  102  ls
+  103  cd /d
+  104  cp -r js/* javaweb
+  105  cd /d/javaweb
+  106  cp /d/js . -R
+  107  ls
+  108  history
+  109  history -e
+  110  cd /d
+  111  ls
+  112  cd ~
+  113  ls -a
+  114  ll -a ~
+  115  ll -a ~/.bash_history
+  116  sz 20213623-20230907.txt
+  117  sz 20213623-20230907.txt
+  118  history > 20213623-20230907
+  119  sz 20213623-20230907
+  120  history > 20213623-20230907.txt
+  121  sz 20213623-20230907.txt
+  122  history>lalala.txt
+  123  sz lalala.txt
+  124  cd /d
+  125  ls
+  126  cd java
+  127  ls
+  128  cd /d/javaweb
+  129  ls
+  130  rm -r js
+  131  ls
+  132  rm photo
+  133  rm -r photo
+  134  ls
+  135  rm javaweb
+  136  cd d
+  137  cd /d
+  138  rm javaweb
+  139  rmdir javaweb
+  140  rmdir -p javaweb
+  141  rm -ijavaweb
+  142  ls
+  143  rm -f javaweb
+  144  rm /d/javaweb
+  145  rm -f /d/javaweb
+  146  rm -r javaweb
+  147  ls
+  148  mkdir javaweb
+  149  ls
+  150  cp -r js/*javaweb
+  151  cp -r js /* javaweb
+  152  history
+  153  cd /d
+  154  ls
+  155  cp -r js/* javaweb
+  156  cd javaweb
+  157  ls
+  158  rm -r javaweb
+  159  cd /d
+  160  rm -r javaweb
+  161  history
+  162  cd/d
+  163  cd ~
+  164  cd /d
+  165  ls
+  166  rm -r javaweb
+  167  history
+  168  cd /d
+  169  ls
+  170  cd javaweb
+  171  ls
+  172  cd
+  173  cd /d
+  174  rm -r javaweb
+  175  cd
+  176  cd /d
+  177  cd javaweb
+  178  ls
+  179  cd /d
+  180  rm -rf javaweb
+  181  cd javaweb
+  182  ls
+  183  rm -r javaweb
+  184  cd /d
+  185  rf javaweb
+  186  rf -r javaweb
+  187  ls
+  188  ls
+  189  mkdir javaweb
+  190  ls
+  191  cd javaweb
+  192  ls
+  193  cp -r js/* javaweb
+  194  cd /d
+  195  vp -r js/* javaweb
+  196  cd javaweb
+  197  ls
+  198  cp /d/js . -R
+  199  ls
+  200  cd /d
+  201  cp -r photo/* javaweb
+  202  ls
+  203  cd javaweb
+  204  ls
+  205  rm -r js
+  206  ls
+  207  cp /d/js . -R
+  208  ls
+  209  history
+  210  history > 20213623-20230905
