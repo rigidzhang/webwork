@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaWebHomework4</title>
+    <style>
+        body {
+            font-size: 17px;
+            background-color: #f5f5f5;
+        }
+        
+        body>div {
+            width: 75%;
+            background-color: white;
+            margin: 0 auto;
+            /*块级元素居中*/
+            overflow: hidden;
+            /*解决上部元素粘连问题*/
+        }
+        
+        #top {
+            background-color: white;
+            color: #606266;
+            font-size: 27px;
+            font-weight: 600;
+        }
+        
+        #text {
+            text-indent: 2em;
+        }
+        
+        body>div>div {
+            margin: 20px;
+        }
+        
+        img {
+            width: 25px;
+            float: right;
+        }
+        
+        #main {
+            background-color: #E8E8E8;
+            font-size: 17px;
+            padding: 16px;
+            font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif, SimHei, SimSun;
+            margin: 12px 40px;
+        }
+        
+        #id {
+            text-align: center;
+        }
+        
+        #name {
+            text-align: center;
+        }
+        
+        #xuehao {
+            float: right;
+            margin-right: 10px;
+        }
+        
+        #number {
+            text-align: center;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4D4F53;
+        }
+        
+        h3 {
+            color: #4f4f4f;
+            margin: 8px 0 16px 0;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 26px;
+        }
+        
+        h4 {
+            text-indent: 2em;
+        }
+        
+        table {
+            /* font-size: 17px; */
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="top">
+            <span>实验报告</span>
+            <img src="https://img0.baidu.com/it/u=2407773217,1248198690&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+            <span id="xuehao">20213623</span>
+            <hr>
+        </div>
+
+        <div>
+            <h3>Linux命令练习</h3>
+            <h3>一、简介</h3>
+        </div>
+
+        <div id="main">
+            <div>
+                <ul>
+                    <li>linux命令，其实本体是一个个的二进制可执行程序，与windows系统中的.exe文件是一个意思</li>
+                    <li>使用GitBash实现，网络诊断工具，用于检测与目标主机之间的连通性。</li>
+                    <li>使用GitBash实现，它也用于诊断网络连接问题并跟踪数据包传输路径。</li>
+                    <li>使用GitBash实现，进行网络请求和数据传输</li>
+                    <li>使用GitBash实现，文本文件查看器，它允许您以交互方式浏览大型文本文件</li>
+                    <li>使用GitBash实现，通过关键字过滤文件行</li>
+                    <li>使用GitBash实现，从文件中提取指定字段或列的命令。</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <h3>二、命令</h3>
+        </div>
+        <div id="main" class="table">
+            <table cellSpancing="8" rules="cols" header-cell-style="{'text-align':'center'}">
+                <tr>
+                    <th width="30px">编号</th>
+                    <th width="310px">命令格式</th>
+                    <th width="270px">命令作用</th>
+                    <th>详解</th>
+                </tr>
+                <tr id="main_z">
+                    <td class="id"> 1</td>
+                    <td class="name">ping 参数</td>
+                    <td>网络诊断工具，用于检测与目标主机之间的连通性。</td>
+                    <td>
+                        <select>
+                            <option>没有选项，只有参数：</option>
+                            <option>参数为要检测的网址也可以为IP地址 </option>
+                            <option>Ctrl+C 组合键来停止 ping 命令的执行</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="id">2</td>
+                    <td class="name">tracert 参数</td>
+                    <td>它也用于诊断网络连接问题并跟踪数据包传输路径。</td>
+                    <td>
+                        <select>
+                        <option>没有选项，只有参数：</option>
+                        <option>参数为要检测的网址也可以为IP地址</option>
+                        <option>Ctrl+C 组合键来停止 ping 命令的执行</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="id">3</td>
+                    <td class="name">curl [选项] 参数</td>
+                    <td>进行网络请求和数据传输</td>
+                    <td>
+                        <select>
+                        <option>选项与参数作用：</option>
+                        <option>选项默认为GET发式，并且不会跟随重定向，不会将响应保存到文件中</option>
+                        <option>-X：指定请求方法，如 GET、POST、PUT 等。</option>
+                        <option>-H：添加请求头信息。</option>
+                        <option>d：发送 POST 请求的数据。</option>
+                        <option>-o：将响应保存到指定的文件中。</option>
+                        <option>-L：跟随重定向。</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="id">4</td>
+                    <td class="name"> less 参数</td>
+                    <td>文本文件查看器，它允许您以交互方式浏览大型文本文件</td>
+                    <td>
+                        <select>
+                        <option>没有选项，只有参数：</option>
+                        <option>参数作用文件名</option>
+                        <option>使用箭头键（上、下、左、右）进行滚动。可以使用 PgUp 和 PgDn 键进行更快速的滚动。</option>
+                        <option>按空格键向下滚动一页。</option>
+                        <option> 按 b 键向上滚动一页。</option>
+                        <option>按 G 键跳转到文件的末尾。</option>
+                        <option>按 g 键跳转到文件的开头。</option>
+                        <option>按 / 键后输入关键词，然后按 Enter 可以搜索关键词并高亮显示匹配结果。按 n 键查找下一个</option>
+                        <option>匹配项，按 N 键查找上一个匹配项。</option>
+                        <option>按 q 键退出 less 查看器。</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="id">5</td>
+                    <td class="name">grep [-n] 关键字 文件路径</td>
+                    <td>通过关键字过滤文件行</td>
+                    <td>
+                        <select>
+                            <option>选项与参数作用:</option>
+                             <option>-n 可选 表示在结果中显示匹配的行的行数</option>
+                            <option>-w 搜索匹配整个单词的模式</option>
+		                    <option>-i 忽略模式的大小写</option>
+		                     <option>-v 反向搜索，即只显示不匹配的行</option>    			
+		                    <option>-E 使用正则表达式进行高级模式匹配</option>
+		                    <option>参数 关键字 必填 用” ”将关键字包围起来</option>
+		                    <option>参数 文件路径 必填 可作为内容输入端口</option>
+                            <option>参数 关键字 必填 用” ”将关键字包围起来</option>
+                            <option>参数 文件路径 必填 可作为内容输入端口</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="id">6</td>
+                    <td class="name">cut [选项]
+                        <列表>
+                            <文件名>
+                    </td>
+                    <td>从文件中提取指定字段或列的命令。</td>
+                    <td>
+                        <select>
+                            <option>选项与参数作用：</option>
+                            <option>-f  提取指定的字段</option>
+                            <option>d   指定自定义的分隔符   要配合-f使用</option>
+                            <option>--complement  输出除了指定的字段之外的部分：</option>
+                    </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>三、简介</h3>
+        </div>
+        <div id="main">
+            <p>gitbash是一个在windows系统上运行Git命令的工具，通过使用命令行实现对计算机的操作，更加接近于计算机的底层。</p>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
