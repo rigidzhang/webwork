@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>video</title>
+  <style>
+		body {
+			background-color: #f5f5f5;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		video {
+			display: block;
+			margin: 20px auto;
+			border: 4px solid #333;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		}
+		div{
+			text-align: center;
+		}
+		.button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+		#page{
+			display:flex;
+			align-items:center;
+			justify-content:center;
+		}
+		#logo{
+			background-color:red;
+			color:black;
+			font-size:4.1em;
+			padding:10px 20px;
+			z-index:1;
+			right:0;
+			top:0.8em;
+			position:absolute;
+		}
+		#showTime{
+			background-color:blue;
+			color:black;
+			font-size:2em;
+			padding:10px 20px;
+			z-index:1;
+			left:0;
+			top:0.8em;
+			position:absolute;
+		}
+  </style>
+ </head>
+ <body>
+ <video controls id = "myvideo"></video>
+ <div id="showTime">0s/0s</div>
+ <div id="logo">1/3</div>
+ <div>
+  <a class="button" href="#" id = "play">Play</a>
+  <a class="button" href="#" id = "stop">Stop</a>
+  <a class="button" href="#" id = "last">Last</a>
+  <a class="button" href="#" id = "next">Next</a>
+  <label for="currentTime"></label>
+  <input type="text" id="currentTime" placeholder="输入视频秒数">
+  <a class="button" href="#" id = "jump">Jump</a>
+  <label for="videoNumber"></label>
+  <input type="text" id="videoNumber" placeholder="输入视频编号">
+  <a class="button" href="#" id = "search">Search</a>
+  </div>
+  <div id="page">
+   <p id="current-video"></p>
+  </div>
+  <div id="buttons"></div>
+  </body>
+ <script>
+ var yvideo = ["v02004g10000c5rrikbc77u4rdiknfog.mp4","v02004g10000c62vpf3c77u7or2pecqg.mp4","v02004g10000c62vsljc77u9oiijujh0.mp4"];
+	var myvideo = document.querySelector("#myvideo");
+	var i = 0;
+	//视频的全屏设置
+	var browserWidth = document.body.clientWidth;
+		myvideo.style.width = browserWidth + 'px';
+	var currentVideoElement=document.getElementById("current-video");
+	function updateCurrentVideoElement(){
+		currentVideoElement.textContent = "这是第"+(i+1)+"个视频";
+	}
+	var logoElement = document.getElementById("logo");
+	function logoDom(){
+		logoElement.textContent = (i+1) + "/" + (yvideo.length);
+		}
+	var showTimeElement = document.getElementById("showTime");
+	setInterval(function showTimeDom() {
+		showTimeElement.textContent = parseInt(myvideo.currentTime) + "s" +  "/" + parseInt(myvideo.duration) + "s";
+		},1000);
+	//跳转到某个视频
+	var videoNumberDom = document.getElementById("videoNumber");
+	document.getElementById("search").onclick = function(){
+	i = parseInt(videoNumberDom.value) - 1;
+	if(i >= 0 && i < yvideo.length){
+		myvideo.src = "video/" + yvideo[i];
+	}else if(i<0){
+		alert("当前视频编号不存在，请输入正确的视频编号！");
+		i = 0;
+		myvideo.src = "video/" + yvideo[i];
+	}else if(i>=yvideo.length){
+		alert("当前视频编号不存在，请输入正确的视频编号！");
+		i = yvideo.length-1;
+		myvideo.src = "video/" + yvideo[i];
+	}else{
+		alert("注意你输入的数据类型");
+		return;
+	}
+	myvideo.play();
+	updateCurrentVideoElement();
+	logoDom();
+	//showTimeDom();
+	};//updateCurrentVideoElement();
+	myvideo.src = "video/" + yvideo[0];
+	document.getElementById("play").onclick = function(){
+		//myvideo.currentTime = currentTimeDom.value;//String to number
+		myvideo.play();
+		//showTimeDom();
+	 };
+	document.getElementById("stop").onclick = function(){
+		myvideo.pause();
+	};
+	document.getElementById("last").onclick = function(){
+		if(i <= 0){
+			i=yvideo.length;}
+		i--;
+		myvideo.src = "video/" + yvideo[i];
+		myvideo.play();
+		updateCurrentVideoElement();
+		logoDom();
+		//showTimeDom();
+	};
+	document.getElementById("next").onclick = function(){
+		i++;
+		if(i==yvideo.length){
+		i = 0;}
+		if(i>yvideo.length){
+		i = yvideo.length-1;}
+		myvideo.src = "video/" + yvideo[i];
+		myvideo.play();
+		updateCurrentVideoElement();
+		logoDom();
+		//showTimeDom();
+	};
+	var buttonDoms=[];
+	for(let i=0;i<9;i++){
+		let buttonDom = document.createElement("input");
+		buttonDom.type = 'button';
+		buttonDom.value = "第"+(i+1)+"部分";
+		buttonDoms[i]=buttonDom;
+		document.getElementById("buttons").appendChild(buttonDoms[i]);
+	}
+	for(let i=0;i<9;i++){
+		buttonDoms[i].onclick=function(){
+			myvideo.currentTime=(i+1)*myvideo.duration/9;
+		}
+	}
+	
+	//跳转到视频的某一秒
+	var currentTimeDom = document.getElementById("currentTime");
+	//currentTimeDom.value = 500;
+	document.getElementById("jump").onclick = function(){
+		if(!parseInt(currentTimeDom.value)){
+			myvideo.currentTime = 0;
+			//console.log("注意你输入的数据类型");
+			alert("注意你输入的数据类型");
+			//myvideo.play();
+		}
+		myvideo.currentTime = currentTimeDom.value;
+		myvideo.play();
+	};
+	document.onkeydown = function(e){//键盘点击在控制台显示
+		console.log("your type:" + e.key);
+	};
+
+	updateCurrentVideoElement();
+ </script>
+</html>
