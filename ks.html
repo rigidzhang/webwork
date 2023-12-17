@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>考试</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        video {
+            max-width: 50%;
+            max-height: 50%;
+            display: block;
+            /*margin: 11em auto;*/
+            margin: 1em auto;
+            border: 4px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        audio {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        div {
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        div#buttons {
+            position: absolute;
+            top: 35%;
+            /*left: calc(10% - 75px);*/
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        div#buttons input {
+            margin-bottom: 4px;
+            padding: 5px 10px;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s ease;
+            width: -webkit-fill-available;
+        }
+
+        div#buttons input:hover {
+            background-color: #45a049;
+        }
+
+        #logo {
+            background-color: #7c7a7a;
+            color: black;
+            font-size: 2em;
+            padding: 10px 20px;
+            z-index: 1;
+            border-radius: 15px;
+            top: 0;
+            position: absolute;
+            right: 0; /* 调整right属性值 */
+        }
+
+        #showTime {
+            background-color: #7c7a7a;
+            color: black;
+            font-size: 2em;
+            padding: 10px 20px;
+            z-index: 1;
+            border-radius: 15px;
+            top: 0;
+            position: absolute;
+            left: 0; /* 调整left属性值 */
+        }
+
+        #switch {
+            position: absolute;
+            top: 0;
+            left: calc(50% - 75px); /* 水平居中 */
+        }
+
+        label[for="videoNumber"] {
+            position: absolute;
+            top: 0;
+            left: calc(25% - 110px);
+        }
+
+        label[for="currentTime"] {
+            position: absolute;
+            top: 0;
+            left: calc(75% - 180px);
+        }
+
+        #button {
+            position: absolute;
+            left: calc(50% - 155px);
+            top: 43em;
+        }
+
+        #name{
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p{
+            margin: 0 110px;
+        }
+
+        #picture {
+            margin-top: 6em;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            max-width: 95px;
+            margin: 0 90px;
+        }
+
+        #information {
+            position: absolute;
+            left: calc(50% - 180px);
+            top: 45em;
+        }
+
+        #title {
+            position: absolute;
+            left: calc(50% - 50px);
+            top: 1.2em;
+            font-size: 36px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div id="title">
+    <a>光影</a>
+</div>
+<div id="member"></div>
+<label for="videoNumber">
+    <input type="text" id="videoNumber" placeholder="输入编号">
+    <a class="button" href="#" id="search">Search</a></label>
+<a class="button" href="#" id="switch">切换到音频</a>
+<label for="currentTime">
+    <input type="text" id="currentTime" placeholder="输入秒数">
+    <a class="button" href="#" id="jump">Jump</a></label>
+<video controls id="myVideo"></video>
+<audio controls id="myAudio" style="display: none"></audio>
+<div id="showTime"></div>
+<div id="logo"></div>
+<div id="button">
+    <a class="button" href="#" id="play">Play</a>
+    <a class="button" href="#" id="stop">Stop</a>
+    <a class="button" href="#" id="last">Last</a>
+    <a class="button" href="#" id="next">Next</a>
+</div>
+<div id="buttons"></div>
+<div id="information">
+    <h1>学校：江西科技师范大学</h1>
+    <h2>班级：21计科2班</h2>
+    <h3>小组成员:张梓鑫 赖盛桢 张荣军</h3>
+</div>
+</body>
+<script src="ks.js"></script>
+<script>
+    var Model = {
+        i: 0,
+        UI: {
+            myVideo: document.querySelector("#myVideo"),
+            myAudio: document.querySelector("#myAudio"),
+            picture: document.getElementsByTagName('img'),
+            videoDom: dataSource.mp4Files.fileNames,
+            audioDom: dataSource.mp3Files.fileNames,
+            pictureDom: dataSource.author.picFiles,
+            nameDom: dataSource.author.name,
+            logoElement: document.getElementById("logo"),
+            showTimeDom: document.getElementById("showTime"),
+            videoNumberDom: document.getElementById("videoNumber"),
+            currentTimeDom: document.getElementById("currentTime"),
+
+            playDom: document.getElementById("play"),
+            stopDom: document.getElementById("stop"),
+            lastDom: document.getElementById("last"),
+            nextDom: document.getElementById("next"),
+            searchDom: document.getElementById("search"),
+            jumpDom: document.getElementById("jump"),
+            buttonDomS: [],
+            switchDom: document.getElementById("switch"),
+        },
+        play: function () {
+            if (Model.UI.myVideo.style.display !== 'none') { // 当前正在播放视频
+                Model.UI.myVideo.play();
+            } else { // 当前正在播放音频
+                Model.UI.myAudio.play();
+            }
+        },
+        stop: function () {
+            if (Model.UI.myVideo.style.display !== 'none') { // 当前正在播放视频
+                Model.UI.myVideo.pause();
+            } else { // 当前正在播放音频
+                Model.UI.myAudio.pause();
+            }
+        },
+        last: function () {
+            let videoDom = Model.UI.videoDom;
+            let audioDom = Model.UI.audioDom;
+            if (Model.UI.myVideo.style.display !== 'none') {
+                if (Model.i <= 0) {
+                    Model.i = videoDom.length;
+                }
+                Model.i--;
+                Model.UI.myVideo.src = dataSource.mp4Files.path + videoDom[Model.i];
+                Model.UI.myVideo.play();
+                //showTimeDom();
+            } else {
+                if (Model.i <= 0) {
+                    Model.i = audioDom.length;
+                }
+                Model.i--;
+                Model.UI.myAudio.src = dataSource.mp3Files.path + audioDom[Model.i];
+                Model.UI.myAudio.play();
+            }
+            Model.logoDom();
+        },
+        next: function () {
+            let videoDom = Model.UI.videoDom;
+            let audioDom = Model.UI.audioDom;
+            if (Model.UI.myVideo.style.display !== 'none') {
+                Model.i++;
+                if (Model.i === videoDom.length) {
+                    Model.i = 0;
+                }
+                if (Model.i > videoDom.length) {
+                    Model.i = videoDom.length - 1;
+                }
+                Model.UI.myVideo.src = dataSource.mp4Files.path + videoDom[Model.i];
+                Model.UI.myVideo.play();
+            } else {
+                Model.i++;
+                if (Model.i === audioDom.length) {
+                    Model.i = 0;
+                }
+                if (Model.i > audioDom.length) {
+                    Model.i = audioDom.length - 1;
+                }
+                Model.UI.myAudio.src = dataSource.mp3Files.path + audioDom[Model.i];
+                Model.UI.myAudio.play();
+
+            }
+            Model.logoDom();
+        },
+        switch: function () {
+            let myVideo = Model.UI.myVideo;
+            let myAudio = Model.UI.myAudio;
+            let logoElement = Model.UI.logoElement;
+            let switchDom = Model.UI.switchDom;
+            if (myVideo.style.display !== 'none') { // 当前正在播放视频
+                myVideo.pause(); // 暂停视频
+                myVideo.style.display = 'none'; // 隐藏视频
+                myAudio.style.display = 'block';// 显示音频
+                switchDom.textContent = "切换到视频"; // 更新按钮文字
+                logoElement.style.display = 'none'; // 隐藏 logo 元素
+            } else { // 当前正在播放音频
+                myAudio.pause(); // 暂停音频
+                myAudio.style.display = 'none';// 隐藏音频
+                myVideo.style.display = 'block'; // 显示视频
+                switchDom.textContent = "切换到音频"; // 更新按钮文字
+                logoElement.style.display = 'block'; // 隐藏 logo 元素
+            }
+            Model.logoDom();
+            Model.updateButtonValues(); // 调用更新按钮的值的函数
+        },
+        search: function () {
+            let videoNumberDom = Model.UI.videoNumberDom;
+            let myVideo = Model.UI.myVideo;
+            let myAudio = Model.UI.myAudio;
+            let videoDom = Model.UI.videoDom;
+            let audioDom = Model.UI.audioDom;
+            if (Model.UI.myVideo.style.display !== 'none') {
+                Model.i = parseInt(videoNumberDom.value) - 1;
+                if (Model.i >= 0 && Model.i < videoDom.length) {
+                    myVideo.src = dataSource.mp4Files.path + videoDom[Model.i];
+                } else if (Model.i < 0) {
+                    alert("当前视频编号不存在，请输入正确的视频编号！");
+                    Model.i = 0;
+                    myVideo.src = dataSource.mp4Files.path + videoDom[Model.i];
+                } else if (Model.i >= videoDom.length) {
+                    alert("当前视频编号不存在，请输入正确的视频编号！");
+                    Model.i = videoDom.length - 1;
+                    myVideo.src = dataSource.mp4Files.path + videoDom[Model.i];
+                } else {
+                    alert("注意你输入的数据类型");
+                    return;
+                }
+                myVideo.play();
+            } else {
+                Model.i = parseInt(videoNumberDom.value) - 1;
+                if (Model.i >= 0 && Model.i < audioDom.length) {
+                    myAudio.src = dataSource.mp3Files.path + audioDom[Model.i];
+                } else if (Model.i < 0) {
+                    alert("当前音频编号不存在，请输入正确的音频编号！");
+                    Model.i = 0;
+                    myAudio.src = dataSource.mp3Files.path + audioDom[Model.i];
+                } else if (Model.i >= audioDom.length) {
+                    alert("当前音频编号不存在，请输入正确的音频编号！");
+                    Model.i = audioDom.length - 1;
+                    myAudio.src = dataSource.mp3Files.path + audioDom[Model.i];
+                } else {
+                    alert("注意你输入的数据类型");
+                    return;
+                }
+                myAudio.play();
+            }
+            Model.logoDom();
+        },
+        jump: function () {
+            if (Model.UI.myVideo.style.display !== 'none') {
+                if (!parseInt(Model.UI.currentTimeDom.value)) {
+                    Model.UI.myVideo.currentTime = 0;
+                    alert("注意你输入的数据类型");
+                } else if (Model.UI.jumpDom.value < 0) {
+                    alert("不能输入负数");
+                    Model.UI.myVideo.currentTime = 0;
+                } else if (Model.UI.currentTimeDom.value > Model.UI.myVideo.duration) {
+                    alert("超出当前视频时长");
+                    Model.UI.myVideo.currentTime = Model.UI.myVideo.duration;
+                } else {
+                    Model.UI.myVideo.currentTime = Model.UI.currentTimeDom.value;
+                    Model.UI.myVideo.play();
+                }
+            } else {
+                if (!parseInt(Model.UI.currentTimeDom.value)) {
+                    Model.UI.myAudio.currentTime = 0;
+                    alert("注意你输入的数据类型");
+                } else if (Model.UI.currentTimeDom.value < 0) {
+                    alert("不能输入负数");
+                    Model.UI.myAudio.currentTime = 0;
+                } else if (Model.UI.currentTimeDom.value > Model.UI.myAudio.duration) {
+                    alert("超出当前音频时长");
+                    Model.UI.myAudio.currentTime = Model.UI.myAudio.duration;
+                } else {
+                    Model.UI.myAudio.currentTime = Model.UI.currentTimeDom.value;
+                    Model.UI.myAudio.play();
+                }
+            }
+        },
+
+        memberDom: function () {
+            let memberContainer = document.getElementById("member");
+
+            // 生成 id 为 "picture" 的 div 元素
+            let pictureContainer = document.createElement("div");
+            pictureContainer.id = "picture";
+            memberContainer.appendChild(pictureContainer);
+
+            // 生成 id 为 "name" 的 div 元素
+            let nameContainer = document.createElement("div");
+            nameContainer.id = "name";
+            memberContainer.appendChild(nameContainer);
+
+            // 将图片和名称添加到对应的容器中
+            for (let i = 0; i < Model.UI.pictureDom.length; i++) {
+                let img = document.createElement("img");
+                img.src = dataSource.author.path + Model.UI.pictureDom[i];
+                img.title = Model.UI.nameDom[i];
+                pictureContainer.appendChild(img); // 将图片添加到容器中
+
+                let name = document.createElement("p");
+                name.textContent = Model.UI.nameDom[i];
+                nameContainer.appendChild(name);
+            }
+        },
+
+        logoDom: function () {
+            let logoElement = this.UI.logoElement;
+            let videoDom = this.UI.videoDom;
+            if (this.UI.myVideo.style.display !== 'none') {
+                let i = this.i;
+                logoElement.textContent = (i + 1) + "/" + (videoDom.length);
+            }
+        },
+
+        showTimeDom: function () {
+            let showTimeDom = this.UI.showTimeDom;
+            let myVideo = this.UI.myVideo;
+            let myAudio = this.UI.myAudio;
+            if (this.UI.myVideo.style.display !== 'none') {
+                showTimeDom.textContent = parseInt(myVideo.currentTime) + "s" + "/" + parseInt(myVideo.duration) + "s";
+            } else {
+                showTimeDom.textContent = parseInt(myAudio.currentTime) + "s" + "/" + parseInt(myAudio.duration) + "s";
+            }
+        },
+
+        updateButtonValues: function () {
+            let buttonDomS = this.UI.buttonDomS;
+            let myVideo = this.UI.myVideo;
+            if (myVideo.style.display !== 'none') { // 当前正在播放视频
+                for (let i = 0; i < dataSource.mp3Files.time.length; i++) {
+                    buttonDomS[i].value = "第" + (i + 1) + "部分";
+                }
+            } else { // 当前正在播放音频
+                for (let i = 0; i < dataSource.mp3Files.time.length; i++) {
+                    buttonDomS[i].value = dataSource.mp3Files.title[i];
+                }
+            }
+        },
+        init: function () {
+            //视频的全屏设置
+            let browserWidth = document.body.clientWidth;
+            Model.UI.myVideo.style.width = browserWidth + 'px';
+            //预读媒体文件
+            Model.UI.myVideo.src = dataSource.mp4Files.path + Model.UI.videoDom[0];
+            Model.UI.myAudio.src = dataSource.mp3Files.path + Model.UI.audioDom[0];
+            Model.UI.picture.src = dataSource.author.path + Model.UI.pictureDom[0];
+            //下面是异步执行的代码
+            Model.UI.playDom.onclick = function () {
+                Model.play();
+            };
+            Model.UI.stopDom.onclick = function () {
+                Model.stop();
+            };
+            Model.UI.lastDom.onclick = function () {
+                Model.last();
+            };
+            Model.UI.nextDom.onclick = function () {
+                Model.next();
+            };
+            Model.UI.switchDom.onclick = function () {
+                Model.switch();
+            };
+            Model.UI.searchDom.onclick = function () {
+                Model.search();
+            }
+            Model.UI.jumpDom.onclick = function () {
+                Model.jump();
+            }
+            setInterval(function () {
+                Model.showTimeDom();
+            }, 1000);
+            for (let i = 0; i < dataSource.mp3Files.time.length; i++) {
+                let buttonDom = document.createElement("input");
+                buttonDom.type = 'button';
+                if (Model.UI.myVideo.style.display !== 'none') {
+                    buttonDom.value = "第" + (i + 1) + "部分";
+                } else {
+                    buttonDom.value = dataSource.mp3Files.title[i];
+                }
+                Model.UI.buttonDomS[i] = buttonDom;
+                document.getElementById("buttons").appendChild(Model.UI.buttonDomS[i]);
+            }
+            for (let i = 0; i < dataSource.mp3Files.time.length; i++) {
+                Model.UI.buttonDomS[i].onclick = function () {
+                    if (Model.UI.myVideo.style.display !== 'none') {
+                        Model.UI.myVideo.currentTime = (i + 1) * Model.UI.myVideo.duration / dataSource.mp3Files.time.length;
+                    } else {
+                        Model.UI.myAudio.currentTime = dataSource.mp3Files.time[i][0];
+                        window.setTimeout(Model.stop, Math.floor((dataSource.mp3Files.time[i][1] - dataSource.mp3Files.time[i][0]) * 1000));
+                        console.log((dataSource.mp3Files.time[i][1] - dataSource.mp3Files.time[i][0]) * 1000);
+                    }
+                }
+            }
+            Model.memberDom();
+            Model.logoDom(); // 初始化时更新 logo
+            Model.updateButtonValues(); // 初始化时更新按钮值
+        }//init 结束 ,
+    };
+    Model.init();
+</script>
+</html>
