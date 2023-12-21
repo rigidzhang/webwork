@@ -1,8 +1,8 @@
 var dataSource = {
     author: {
         path: "https://laishengzhen.github.io/img/",
-        picFiles:["zrj.jpg","zzx.jpg","lsz.jpg","ljh.jpg"],
-        name:["张荣军","张梓鑫","赖盛桢","李健宏老师"]
+        picFiles:["zrj.jpg","zzx.jpg","lsz.jpg","ltp.jpg","ljh.jpg"],
+        name:["张荣军","张梓鑫","赖盛桢","李添鹏","李健宏老师"]
     },
     mp3Files: {
         path: "https://jxzy-dmxy.jxstnu.edu.cn/",
